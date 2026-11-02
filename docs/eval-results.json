@@ -1,0 +1,47 @@
+{
+  "photograph": {
+    "width": 960,
+    "height": 640,
+    "kind": "painted_reference"
+  },
+  "segmentation_iou": {
+    "window": { "iou": 0.9455, "matched_label": "window" },
+    "curtain": { "iou": 1.0, "matched_label": "curtain" },
+    "record player": { "iou": 0.6779, "matched_label": "record player" },
+    "cupboard": { "iou": 0.9656, "matched_label": "cupboard" },
+    "sofa": { "iou": 0.8786, "matched_label": "sofa" },
+    "lamp": { "iou": 1.0, "matched_label": "lamp" },
+    "clock": { "iou": 0.5051, "matched_label": "clock" },
+    "unobserved corner": { "iou": 1.0, "matched_label": "unobserved corner" }
+  },
+  "depth": {
+    "model_id": "depth-anything-v2-small-q4",
+    "duration_ms": 293.58,
+    "disparity_min": 0.3788366913795471,
+    "disparity_max": 5.67463493347168,
+    "calibration_status": "not_calibrated",
+    "spearman_vs_bottom_closer_dav2": 0.5255,
+    "spearman_vs_bottom_closer_ground_prior": 0.9955
+  },
+  "reconstruction": {
+    "frontal_max_abs_channel_diff": 0,
+    "disocclusion_hole_fraction_dav2_shift18": 0.0056,
+    "disocclusion_hole_fraction_segmented_median_shift18": 0.005,
+    "disocclusion_hole_fraction_ground_prior_shift18": 0.0033,
+    "pipeline_seconds": 0.879,
+    "photo_jpeg_bytes": 34722
+  },
+  "provenance": {
+    "entities": 12,
+    "entities_with_observed_and_estimated_records": 12,
+    "lineage_completeness": 1.0,
+    "hypothesis_preserves_pixels_outside_mask": true,
+    "generated_model_when_unrequested": "none"
+  },
+  "not_measured": [
+    "Live Meta API latency and cost — MODEL_API_KEY was not configured in this run.",
+    "PSNR/SSIM/LPIPS against a held-out novel view — no such photograph exists for the painted reference.",
+    "Calibrated probabilities — none were trained.",
+    "Browser frames per second — measured in the viewer, not in this process."
+  ]
+}
