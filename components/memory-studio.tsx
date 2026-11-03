@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { LivingScene, type LensMode } from "@/components/living-scene";
 import { Slider } from "@/components/ui/slider";
@@ -503,7 +504,14 @@ function Realities({
   return (
     <div className="grid gap-3 lg:grid-cols-[1.1fr_0.9fr]">
       <div className="glass overflow-hidden rounded-3xl">
-        <img src={fileUrl(memory.photograph.url)} alt="" className="max-h-[70vh] w-full object-contain" />
+        <Image
+          src={fileUrl(memory.photograph.url)}
+          alt=""
+          width={memory.photograph.width}
+          height={memory.photograph.height}
+          unoptimized
+          className="max-h-[70vh] w-full object-contain"
+        />
       </div>
       <div className="glass rounded-3xl p-5">
         <p className="kicker">Alternative memory realities</p>

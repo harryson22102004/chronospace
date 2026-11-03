@@ -74,7 +74,7 @@ def sketch_hypothesis(memory: dict, rgb: np.ndarray, claim: str, speaker: str | 
         "created_at": utc_now(),
         "prompt": (
             f"Illustrate a {kind} only inside the unobserved region. "
-            "Do not alter photographed pixels. Claim: {claim}"
+            f"Do not alter photographed pixels. Claim: {claim}"
         ),
         "generator": {
             "model_id": "procedural-hypothesis-sketch-v1",

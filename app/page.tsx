@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fileUrl } from "@/lib/utils";
 
@@ -58,7 +59,14 @@ export default function HomePage() {
         </div>
         <div className="glass overflow-hidden rounded-[28px]">
           {memories?.[0] ? (
-            <img src={fileUrl(memories[0].photo_url)} alt="" className="aspect-[3/2] w-full object-cover" />
+            <Image
+              src={fileUrl(memories[0].photo_url)}
+              alt=""
+              width={960}
+              height={640}
+              unoptimized
+              className="aspect-[3/2] w-full object-cover"
+            />
           ) : (
             <div className="aspect-[3/2] bg-[#1a1815]" />
           )}
@@ -79,7 +87,14 @@ export default function HomePage() {
         <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {memories?.map((memory) => (
             <Link key={memory.id} href={`/memory/${memory.id}`} className="glass overflow-hidden rounded-3xl">
-              <img src={fileUrl(memory.photo_url)} alt="" className="aspect-[3/2] w-full object-cover" />
+              <Image
+                src={fileUrl(memory.photo_url)}
+                alt=""
+                width={960}
+                height={640}
+                unoptimized
+                className="aspect-[3/2] w-full object-cover"
+              />
               <div className="p-4">
                 <h3 className="serif text-xl">{memory.title}</h3>
                 <p className="mt-1 text-xs text-[var(--muted)]">
