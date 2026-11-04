@@ -32,6 +32,7 @@ npm run evaluate
 | --- | --- |
 | `MODEL_API_KEY` | Meta Model API bearer token. Optional. |
 | `VISION_URL` | Defaults to `http://127.0.0.1:8742`. |
+| `VISION_HOST` | Production vision bind address. Defaults to `127.0.0.1`. |
 | `DEPTH_MODEL_PATH` | ONNX checkpoint. |
 | `CHRONOSPACE_DATA` | Memory store. Defaults to `data/`. |
 

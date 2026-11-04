@@ -14,7 +14,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 
-from .config import ALLOWED_TYPES, MAX_UPLOAD_BYTES, MEMORIES_DIR
+from .config import ALLOWED_TYPES, MAX_UPLOAD_BYTES, MEMORIES_DIR, VISION_ORIGINS
 from .hypotheses import attach_external_image, sketch_hypothesis
 from .links import propose_for, set_link_status
 from .pipeline import build_memory, read_upload, utc_now
@@ -26,7 +26,7 @@ from .enrich import attach_sam, attach_scene, decode_mask_png
 app = FastAPI(title="ChronoSpace epistemic engine")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=VISION_ORIGINS,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -315,7 +315,10 @@ def scene(memory_id: str, body: MuseSceneBody) -> dict:
     memory = _memory_or_404(memory_id)
     if not memory["consent"].get("external_models"):
         raise HTTPException(403, "This memory was not consented for external models.")
-    updated = attach_scene(memory, body.summary, body.title, body.audio_elements, body.invocation)
+    try:
+        updated = attach_scene(memory, body.summary, body.title, body.audio_elements, body.invocation)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc)) from exc
     return {"memory": updated}
 
 

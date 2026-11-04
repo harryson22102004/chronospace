@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "node scripts/dev.mjs",
     "dev:web": "next dev --turbopack -H 0.0.0.0 -p 43123",
-    "dev:vision": ".venv/bin/uvicorn services.epistemic.server:app --host 127.0.0.1 --port 8742",
+    "dev:vision": "node scripts/python.mjs -m uvicorn services.epistemic.server:app --host 127.0.0.1 --port 8742",
     "build": "next build",
     "start": "node scripts/start.mjs",
     "lint": "eslint",
-    "test": "vitest run && .venv/bin/pytest -q",
-    "evaluate": ".venv/bin/python -m services.epistemic.evaluate"
+    "test": "vitest run && node scripts/python.mjs -m pytest -q",
+    "evaluate": "node scripts/python.mjs -m services.epistemic.evaluate"
   },
   "dependencies": {
     "@meta-sam/parser": "^0.1.0",
